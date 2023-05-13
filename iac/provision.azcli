@@ -1,0 +1,7 @@
+az containerapp up \
+  --name $API_NAME \
+  --resource-group $RESOURCE_GROUP \
+  --location $LOCATION \
+  --environment $ENVIRONMENT \
+  --context-path ./src \
+  --repo <YOUR_GITHUB_REPOSITORY_NAME>
