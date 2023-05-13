@@ -1,9 +1,25 @@
-az containerapp up \
-  -n $API_NAME \
-  --image $ACR_IMAGE \
+# Use environment variables to substitute all this values
+
+# Create container app environment
+az containerapp env create \
   --resource-group $RESOURCE_GROUP \
-  --location $LOCATION \
+  --name $ENVIRONMENT \
+  --location $LOCATION
+
+# Create container app
+# Less hardware than this will make the container crash
+az containerapp create \
+  -n $API_NAME \
+  -g $RESOURCE_GROUP \
+  --image $ACR_IMAGE \
   --environment $ENVIRONMENT \
-  --context-path ./src \
+  --cpu 1 \
+  --memory 2.0Gi \
+  --min-replicas 0 \
+  --max-replicas 1 \
   --registry-username $ACR_USERNAME \
-  --registry-password $ACR_PASSWORD
+  --registry-password $ACR_PASSWORD \
+  --registry-server $ACR_SERVER
+
+# Enable ingress controller to make the app publicly accessible
+az containerapp ingress enable -n $API_NAME -g $RESOURCE_GROUP --type external --target-port 8000 --transport auto
