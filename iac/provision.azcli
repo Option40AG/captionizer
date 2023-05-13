@@ -1,0 +1,9 @@
+az containerapp up \
+  -n $API_NAME \
+  --image $ACR_IMAGE \
+  --resource-group $RESOURCE_GROUP \
+  --location $LOCATION \
+  --environment $ENVIRONMENT \
+  --context-path ./src \
+  --registry-username $ACR_USERNAME \
+  --registry-password $ACR_PASSWORD
