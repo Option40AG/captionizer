@@ -1,7 +1,9 @@
 az containerapp up \
-  --name $API_NAME \
+  -n $API_NAME \
+  --image $ACR_IMAGE \
   --resource-group $RESOURCE_GROUP \
   --location $LOCATION \
   --environment $ENVIRONMENT \
   --context-path ./src \
-  --repo <YOUR_GITHUB_REPOSITORY_NAME>
+  --registry-username $ACR_USERNAME \
+  --registry-password $ACR_PASSWORD
