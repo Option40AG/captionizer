@@ -32,8 +32,8 @@ def get_endpoint(url: str):
     
 def inference(url: str):
     try:
-        processor = AutoProcessor.from_pretrained("./models/git-base-textcaps")
-        model = AutoModelForCausalLM.from_pretrained("./models/git-base-textcaps")
+        processor = AutoProcessor.from_pretrained("./model/git-base-textcaps")
+        model = AutoModelForCausalLM.from_pretrained("./model/git-base-textcaps")
 
         image = Image.open(requests.get(url, stream=True).raw)
 

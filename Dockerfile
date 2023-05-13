@@ -7,7 +7,7 @@ WORKDIR /app
 # Copy the Python script and model files to the container
 COPY requirements.txt ./requirements.txt
 COPY src/main.py ./src/main.py
-COPY ./models/git-base-textcaps ./models/git-base-textcaps
+COPY ./model/git-base-textcaps ./model/git-base-textcaps
 
 # Install dependencies
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
