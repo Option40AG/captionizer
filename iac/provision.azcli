@@ -1,4 +1,4 @@
-# Use environment variables to substitute all this values
+# Use environment variables to substitute all these values
 
 # Create container app environment
 az containerapp env create \
