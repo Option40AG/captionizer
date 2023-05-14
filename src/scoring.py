@@ -3,6 +3,8 @@ import requests
 from PIL import Image
 
 def score(image: bytes):
+
+    # Use assets of the model from the local filesystem
     processor = AutoProcessor.from_pretrained("./../model/git-base-textcaps")
     model = AutoModelForCausalLM.from_pretrained("./../model/git-base-textcaps")
 

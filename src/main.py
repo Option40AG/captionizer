@@ -21,7 +21,7 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
-@app.get("/captionize")
+@app.get("/caption")
 def get_endpoint(url: str):
     try:
         # Validate that the URL is valid
