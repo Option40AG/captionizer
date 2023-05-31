@@ -17,8 +17,6 @@ def score(image: bytes):
         device = torch.device("cpu")
         model = AutoModelForCausalLM.from_pretrained("./../model/git-base-textcaps").to(device)
 
-    # model = AutoModelForCausalLM.from_pretrained("./../model/git-base-textcaps")
-
     pixel_values = processor(images=image, return_tensors="pt").pixel_values.to(device)
 
     generated_ids = model.generate(pixel_values=pixel_values, max_length=50)
