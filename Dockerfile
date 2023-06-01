@@ -6,8 +6,7 @@ WORKDIR /app
 
 # Copy the Python script and model files to the container
 COPY requirements.txt ./requirements.txt
-
-# RUN apt-get update && apt-get install -y gcc python3-dev
+COPY model/git-base-textcaps ./model/git-base-textcaps
 
 # Install dependencies
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
@@ -16,8 +15,7 @@ RUN pip install --no-cache-dir --upgrade -r requirements.txt
 FROM python:3.11.3-alpine as Slim
 
 # Copy rest of assets
-COPY --from=Base src/ ./src/
-COPY --from=Base ./model/git-base-textcaps ./model/git-base-textcaps
+COPY --from=Base /app /app
 
 WORKDIR /app/src
 
